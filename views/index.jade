@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  button.btn(data-action="forward") Forward
+  button.btn(data-action="left") Turn Left
+  button.btn(data-action="right") Turn Right
+  button.btn(data-action="backward") Backward
