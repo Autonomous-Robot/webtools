@@ -8,54 +8,36 @@ html
 	script(type='text/javascript').
 
 		var ros=new ROSLIB.Ros({
-			url:'ws://192.168.1.1:9090'
+			url:'ws://143.215.108.175:9090'
 		});
 		var arduino = new ROSLIB.Topic({
 			ros : ros,
 			name : '/chatter',
-			messageType : 'std_msgs/String'
+			messageType : 'std_msgs/Char'
 		});
-		//var cmdVel = new ROSLIB.Topic({
-		//	ros: ros,
-		//	name:'/cmd_vel',
-		//	messageType:'geometry_msgs/Twist'
-		//});
-		//var twist = new ROSLIB.Message({
-		//	linear:{
-		//		x:0.1,
-		//		y:0.2,
-		//		z:0.3
-		//	},
-		//	angular:{
-		//		x : -0.1,
-		//		y : -0.2,
-		//		z : -0.3
-		//	}
-		//});
-		//cmdVel.publish(twist);
 		function forward(){
 			var movement = new ROSLIB.Message({
-				data:"w"
+				data:119 //w
 			});
 			arduino.publish(movement);
 		}
 		function turn_left(){
 			var movement = new ROSLIB.Message({
-				data:"a"
+				data:97 //a
 			});
 			arduino.publish(movement);
 		}
 
 		function turn_right(){
 			var movement = new ROSLIB.Message({
-				data:"d"
+				data:100 //d
 			});
 			arduino.publish(movement);
 		}
 
 		function backward(){
 			var movement = new ROSLIB.Message({
-				data:"s"
+				data:115 //s
 			});
 			arduino.publish(movement);
 		}
