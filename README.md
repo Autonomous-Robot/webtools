@@ -38,3 +38,5 @@ Node.js is the underlying web framework for this project. It depends on [roslibj
 3. In the webtools folder
     
         node app.js
+
+4. Open url <ip-address>:9090 webbrowsers
