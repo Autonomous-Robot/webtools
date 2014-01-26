@@ -1,11 +1,64 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='javascript', href='/javascripts/eventemitter2.min.js')
-    link(rel='javascript', href='/javascripts/roslib.min.js')
-    script(type='text/javascript').
-	console.log("hello")
-  body
-    block content
+	head
+	title= title
+	link(rel='stylesheet', href='/stylesheets/style.css')
+	script(src='/javascripts/eventemitter2.min.js')
+	script(src='/javascripts/roslib.min.js')
+	script(type='text/javascript').
+
+		var ros=new ROSLIB.Ros({
+			url:'ws://192.168.1.1:9090'
+		});
+		var arduino = new ROSLIB.Topic({
+			ros : ros,
+			name : '/chatter',
+			messageType : 'std_msgs/String'
+		});
+		//var cmdVel = new ROSLIB.Topic({
+		//	ros: ros,
+		//	name:'/cmd_vel',
+		//	messageType:'geometry_msgs/Twist'
+		//});
+		//var twist = new ROSLIB.Message({
+		//	linear:{
+		//		x:0.1,
+		//		y:0.2,
+		//		z:0.3
+		//	},
+		//	angular:{
+		//		x : -0.1,
+		//		y : -0.2,
+		//		z : -0.3
+		//	}
+		//});
+		//cmdVel.publish(twist);
+		function forward(){
+			var movement = new ROSLIB.Message({
+				data:"w"
+			});
+			arduino.publish(movement);
+		}
+		function turn_left(){
+			var movement = new ROSLIB.Message({
+				data:"a"
+			});
+			arduino.publish(movement);
+		}
+
+		function turn_right(){
+			var movement = new ROSLIB.Message({
+				data:"d"
+			});
+			arduino.publish(movement);
+		}
+
+		function backward(){
+			var movement = new ROSLIB.Message({
+				data:"s"
+			});
+			arduino.publish(movement);
+		}
+
+	body
+		block content

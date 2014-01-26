@@ -3,7 +3,7 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  button.btn(data-action="forward") Forward
-  button.btn(data-action="left") Turn Left
-  button.btn(data-action="right") Turn Right
-  button.btn(data-action="backward") Backward
+  button.btn(id="forward" data-action="forward" onClick="forward()") Forward
+  button.btn(id="left" data-action="left" onClick="turn_left()") Turn Left
+  button.btn(id="right" data-action="right" onClick="turn_right()") Turn Right
+  button.btn(id="backward" data-action="backward" onClick="backward()") Backward
