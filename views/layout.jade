@@ -8,7 +8,7 @@ html
 	script(type='text/javascript').
 
 		var ros=new ROSLIB.Ros({
-			url:'ws://143.215.108.175:9090'
+			url:'ws://143.215.108.175:9090'/*ws://<ip-address>:<port_num>*/
 		});
 		var arduino = new ROSLIB.Topic({
 			ros : ros,
@@ -17,7 +17,7 @@ html
 		});
 		function forward(){
 			var movement = new ROSLIB.Message({
-				data:119 //w
+				data:119 //w, because javascript cannot send char like 'w'
 			});
 			arduino.publish(movement);
 		}
